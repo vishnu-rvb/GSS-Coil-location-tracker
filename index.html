@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSS Coil Location Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="script.js " defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>GSS Coil Location Tracker</h1>
+    <div id="reader" width="600px"></div>
+    <form id="form">
+        <label for="input-date">Date:</label>
+        <input type="date" id="input-date" name="date" required>
+        
+        <label for="input-coil">Coil:</label>
+        <input type="text" id="input-coil" name="coil" required>
+        <input type="file" id="input-coilQr" name="coilQr" 
+        accept="image/*" capture="environment" onchange="scanQRCode_jsQR('input-coilQr', 'input-coil')">
+        <label for="reader" class="scan-icon" onclick="scanQRCode('input-coilQr', 'input-coil')"></label>
+
+        <label for="input-location">Location:</label>
+        <input type="text" id="input-location" name="location" required>
+        <input type="file" id="input-locationQr" name="locationQr" 
+        accept="image/*" capture="environment" onchange="scanQRCode_jsQR('input-locationQr', 'input-location')">
+        <label for="reader" class="scan-icon" onclick="scanQRCode('input-locationQr', 'input-location')"></label>
+
+        <label for="input-user">User:</label>
+        <select id="input-user" name="users">
+            <option value="operator A">operator A</option>
+            <option value="operator B">operator B</option>
+            <option value="operator C">operator C</option>
+        </select>
+        <!--<input type="text" id="input-user" name="user" required>-->
+        
+        <button type="submit">Submit</button>
+        <button type="button" class="clear" onclick="clearForm()">Clear</button>
+    </form>
+</body>
+</html>
