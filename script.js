@@ -3,7 +3,7 @@ function submitForm(event){
     const URL = 'https://prod-30.centralindia.logic.azure.com:443/workflows/60847960349f4deebdbb8e59ebe6c629/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=-WevHSR0PbtfOYaAWwlEVP3MXqgh3mzWrpmNZgNxioA';
     const formData = new FormData(event.target);
     const data = {
-        date: formData.get('date'),
+        //date: formData.get('date'),
         coil: formData.get('coil'),
         location: formData.get('location'),
         user: formData.get('users')
