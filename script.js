@@ -1,3 +1,5 @@
+function clearForm() {document.getElementById('form').reset();}
+
 function submitForm(event){
     event.preventDefault();
     const URL = 'https://prod-30.centralindia.logic.azure.com:443/workflows/60847960349f4deebdbb8e59ebe6c629/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=-WevHSR0PbtfOYaAWwlEVP3MXqgh3mzWrpmNZgNxioA';
@@ -9,12 +11,10 @@ function submitForm(event){
         user: formData.get('users')
     };
     console.log(data);
-    clearForm();
     fetch(URL, {method: 'POST',headers: {'Content-Type':'application/json'},body: JSON.stringify(data)})
-    .then(response=>{console.log('Response:', response);alert('Coil location updated');})
+    .then(response=>{console.log('Response:', response);alert('Coil location updated');clearForm();})
     .catch(error => {console.error('Error:', error);alert('Error submitting data');});
 }
-function clearForm() {document.getElementById('form').reset();}
 
 function processImage(imageSrc, callback) {
     const img = new Image();
