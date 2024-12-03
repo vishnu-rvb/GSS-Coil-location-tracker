@@ -9,6 +9,7 @@ function submitForm(event){
         user: formData.get('users')
     };
     console.log(data);
+    clearForm();
     fetch(URL, {method: 'POST',headers: {'Content-Type':'application/json'},body: JSON.stringify(data)})
     .then(response=>{console.log('Response:', response);alert('Coil location updated');})
     .catch(error => {console.error('Error:', error);alert('Error submitting data');});
@@ -61,8 +62,7 @@ function scanQRCode_API(fileInputId, textInputId){
         textInput.value = String(data[0]['symbol'][0]['data']);})
     .then(error=>{console.log('error:',error);});
 }
-function scanQRCode(fileInputId, textInputId){
-    const fileInput = document.getElementById(fileInputId);
+function scanQRCode(textInputId){
     const textInput = document.getElementById(textInputId);
     html5QrcodeScanner.render(
         (decodedText, decodedResult)=>{textInput.value=decodedText;html5QrcodeScanner.clear();},
